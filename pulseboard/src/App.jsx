@@ -15,7 +15,7 @@ function App() {
 
 
   
-    {
+    
   useEffect(() => {
     setTimeout(() => {
       setStats([
@@ -40,6 +40,7 @@ function App() {
     <ThemeContext.Provider value={{ isDark, setIsDark }}>
     <div>
       <h1>PulseBoard</h1>
+      <p>isDark is: {isDark.toString()}</p>
       {isLoading ? (
         <p>Loading...</p>
       ) : (
@@ -71,6 +72,7 @@ function App() {
       <Tooltip />
       <Line type="monotone" dataKey="users" stroke="#8884d8" />
     </LineChart>
+    <button onClick={() => setIsDark(!isDark)}>Toggle Dark Mode</button>
   </>
   )}
     </div>
@@ -78,7 +80,6 @@ function App() {
   )
 }
 
-}
 
 
 export default App
