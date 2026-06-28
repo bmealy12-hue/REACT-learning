@@ -6,11 +6,16 @@ import heroImg from './assets/hero.png'
 import './App.css'
 import StatCard from './StatCard'
 import { LineChart, Line, XAxis, YAxis, Tooltip } from 'recharts'
+import { ThemeContext } from './ThemeContext.jsx'
 
 function App() {
   const [stats, setStats] =useState([])
   const [isLoading, setIsLoading] = useState(true)
+  const [isDark, setIsDark] = useState(false)
 
+
+  
+    {
   useEffect(() => {
     setTimeout(() => {
       setStats([
@@ -32,6 +37,7 @@ function App() {
 
 
   return (
+    <ThemeContext.Provider value={{ isDark, setIsDark }}>
     <div>
       <h1>PulseBoard</h1>
       {isLoading ? (
@@ -66,9 +72,13 @@ function App() {
       <Line type="monotone" dataKey="users" stroke="#8884d8" />
     </LineChart>
   </>
-)}
+  )}
     </div>
+    </ThemeContext.Provider>
   )
 }
+
+}
+
 
 export default App
